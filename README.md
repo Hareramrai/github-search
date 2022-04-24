@@ -1,4 +1,4 @@
-# Job Market Place Application
+# Github Search Application
 
 ## About
 
