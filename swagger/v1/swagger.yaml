@@ -1,0 +1,94 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "API V1",
+    "version": "v1"
+  },
+  "basePath": "/api/v1",
+  "servers": [
+    {
+      "url": "http://{defaultHost}",
+      "variables": {
+        "defaultHost": {
+          "default": "localhost:3000/api/v1"
+        }
+      }
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+    },
+    "schemas": {
+      "error_object": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Message"
+          }
+        }
+      },
+      "repository": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "full_name": {
+            "type": "string"
+          },
+          "language": {
+            "type": "string"
+          },
+          "stargazers_count": {
+            "type": "integer"
+          },
+          "watchers_count": {
+            "type": "integer"
+          },
+          "owner": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "avatar_url": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/repositories/": {
+      "get": {
+        "summary": "List of repositories",
+        "tags": [
+          "Repositories API"
+        ],
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "returns repositories when github request is succesfull"
+          },
+          "400": {
+            "description": "returns errors when github request is failed"
+          }
+        }
+      }
+    }
+  }
+}
